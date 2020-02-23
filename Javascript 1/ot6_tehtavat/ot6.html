@@ -1,0 +1,134 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JavaScriptin-ohjelmointi</title>
+    <meta name="description" content="JavaScript-ohjelmoinnin perusteet">
+    <meta name="author" content="Teemu Salminen">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container bg-light">
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 6 A</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <span>
+                    <input id="teksti-input" type="text" placeholder="Kirjoita tähän..." aria-label="Teksti" aria-describedby="basic-addon1">
+                </span>
+                <p class="lead text-left my-4"><b>Teksti:</b> <span id="teksti-output"></span></p>
+            </div>
+            
+            <p class="lead text-center">Kun ohjelma tulostaa kirjoitetun tekstin, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 6 B</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a id="koti-tab" class="nav-link" href="javascript:void(0)">Koti</a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="yhteystiedot-tab" class="nav-link" href="javascript:void(0)">Yhteystiedot</a>
+                    </li>
+                    <li class="nav-item">
+                      <a id="lomake-tab" class="nav-link" href="javascript:void(0)">Lomake</a>
+                    </li>
+                </ul>
+                <div id="koti-page" class="card text-left" style="height: 400px;" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title">Kotisivun otsikko</h5>
+                        <p class="card-text">Tervetuloa sivulle! Tämä on koti-välilehti. Onnistuuko siirtyminen seuraaville välilehdille?</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque iaculis dolor eu tortor ultricies interdum. Fusce faucibus blandit enim in ullamcorper. Maecenas eget eleifend ipsum. Mauris lobortis eu velit non dictum.</p>
+                    </div>
+                </div>
+                <div id="yhteystiedot-page" class="card text-left" style="height: 400px;" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title">Yhteystiedot</h5>
+                        <p class="card-text">Postiosoite: Aamukuja 1 A 30, 00120</p>
+                        <p class="card-text">Puhelinnumero: 123 456 7890</p>
+                        <p class="card-text">Sähköpostiosoite: asd@das.fi</p>
+                    </div>
+                </div>
+                <div id="lomake-page" class="card text-left" style="height: 400px;" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title">Yhteydenottolomake</h5>
+                        <p class="card-text">Anna palautetta:</p>
+                        <textarea rows=4 style="width: 100%"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <p class="lead text-center">Kun ohjelma näyttää vain valitun välilehden, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 6 C</span></h3>
+            <hr class="my-4">
+
+            <div id="parallax-container" class="container text-center" style="width: 25rem; height: 25rem; overflow: hidden;">
+                <img src="graphics/parallax.jpg" id="parallax-image" style="position: relative; pointer-events: none; left: -163px; top: -124px;">
+            </div>
+
+            <p class="lead text-center">Kun parallax-taustakuva liikkuu hitaasti hiiren liikkeiden mukaan, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 6 D</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <button id="lisaa-postaus-button" type="button" class="btn btn-outline-primary my-2">Tee postaus</button>
+                <div id="lisaa-postaus-panel" class="card text-left" hidden>
+                    <div class="card-body">
+                        <h5 class="card-title">Tee postaus</h5>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Otsikko</span>
+                            </div>
+                            <input id="otsikko-input" type="text" class="form-control" placeholder="Kirjoita otsikko..." aria-label="Otsikko" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Postaus</span>
+                            </div>
+                            <textarea id="postaus-input" rows="5" type="text" class="form-control" placeholder="Kirjoita postaus..." aria-label="Postaus" aria-describedby="basic-addon1"></textarea>
+                        </div>
+                        <button id="tallenna-postaus-button" type="button" class="btn btn-outline-primary my-2">Tallenna postaus</button>
+                        <button id="peruuta-postaus-button" type="button" class="btn btn-outline-secondary my-2">Peruuta</button>
+                    </div>
+                </div>
+                <div id="postaus-container"></div>
+                
+            </div>
+
+            <p class="lead text-center">Kun "Tee postaus" -nappi avaa postaus-lomakkeen, "Tallenna" ja "Peruuta" -napit sulkevat postaus-lomakkeen, kaikki postaukset tulostetaan listassa ja "Poista"-nappi poistaa yksittäisen postauksen, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+
+        <p class="text-center">&copy; Teemu Salminen - Xamk</p>
+    </div>
+
+    <script src="js/libraries/jquery-3.4.0.min.js"></script>
+    <script src="js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="ot6a.js"></script>
+    <script src="ot6b.js"></script>
+    <script src="ot6c.js"></script>
+    <script src="ot6d.js"></script>
+</body>
+
+</html>

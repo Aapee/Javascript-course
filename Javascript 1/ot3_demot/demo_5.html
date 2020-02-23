@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+
+<body>
+
+<script>
+//luodaan auto-olio
+let auto = { //auto on objekti eli olio
+	merkki: "Honda", //property eli ominaisuus (muuttuja)
+	vuosimalli: 2010,
+	hinta: 12000
+} 
+
+//luodaan toinen olio, jolla on metodi (funktio)
+let isinAuto = { //auto on objekti eli olio
+	merkki: "Audi", //property eli ominaisuus (muuttuja)
+	vuosimalli: 2006,
+	hinta: 10000,
+	tulostaAutoTiedot: function(){ //metodi
+		return "Merkki: " + this.merkki + " Vuosimalli: " + this.vuosimalli;
+	}
+} 
+//Tulostetaan olion ominaisuus
+console.log(auto.merkki);
+//kutsutaan olion metodia
+console.log(isinAuto.tulostaAutoTiedot());
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+

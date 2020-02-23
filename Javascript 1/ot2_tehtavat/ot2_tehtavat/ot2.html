@@ -1,0 +1,180 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JavaScriptin-ohjelmointi</title>
+    <meta name="description" content="JavaScript-ohjelmoinnin perusteet">
+    <meta name="author" content="Teemu Salminen">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container bg-light">
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 2 A</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Tilauksen loppusumma (€)</span>
+                    </div>
+                    <input id="loppusumma_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Tilauksen loppusumma" aria-describedby="basic-addon1">
+                </div>
+                <button onclick="laskeAlennus()" type="button" class="btn btn-outline-primary">Laske alennus</button>
+
+                <table class="table table-borderless text-left">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Loppusumma:</th>
+                        <td id="loppusumma">0 €</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Alennus:</th>
+                        <td id="alennus">0 €</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Maksettava:</th>
+                        <td id="maksettava">0 €</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+
+            <p class="lead text-center">Kun alennuslaskuri vähentää 10 % yli 100 euron ostoksista, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+            <p id="ot2aresult" class="lead text-center font-weight-bold"></p>
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 2 B</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <img id="dice1" src="graphics/dice1.svg" style="width: 5rem;">
+                <img id="dice2" src="graphics/dice1.svg" style="width: 5rem;">
+
+                <div class="my-4"><button onclick="throwDice()" type="button" class="btn btn-outline-primary">Heitä noppia</button></div>
+                <p id="noppatulos" class="lead"></p>
+            </div>
+
+            <p class="lead text-center">Kun noppien silmäluvut kerrotaan kirjoitetussa muodossa oikein, ja parit näytetään erikseen, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+            <p id="ot2bresult" class="lead text-center font-weight-bold"></p>
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 2 C</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 30rem;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Nimi</span>
+                    </div>
+                    <input id="nimi_input" type="text" class="form-control" placeholder="Kirjoita tähän..." aria-label="Nimi" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Kuinka monta kertaa tulostetaan</span>
+                    </div>
+                    <input id="nimi_kertaa_input" type="number" class="form-control" placeholder="Kirjoita tähän..." aria-label="Nimi" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="printName()" type="button" class="btn btn-outline-primary">Tulosta</button>
+
+                <div class="my-4"><p id="nimen_tulostus" class="lead"></p></div>
+            </div>
+
+            <p class="lead text-center">Kun ohjelma tulostaa käyttäjän antaman tekstin niin monta kertaa kun on määritelty, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+            <p id="ot2cresult" class="lead text-center font-weight-bold"></p>
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 1 D</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <h1 id="ot2d" class="display-4 text-center">Lippuautomaatti</h1>
+                <div class="my-4 text-left">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="luokka_radio" id="luokka2_radio" value=1 checked>
+                        <label class="form-check-label" for="luokka2_radio">2. luokka</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="luokka_radio" id="luokka1_radio" value=2>
+                        <label class="form-check-label" for="luokka1_radio">1. luokka</label>
+                    </div>
+                </div>
+                <div class="my-4 text-left">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="oneortwoway_radio" id="oneway_radio" value="option1" checked>
+                        <label class="form-check-label" for="oneway_radio">Meno</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="oneortwoway_radio" id="twoway_radio" value="option2">
+                        <label class="form-check-label" for="twoway_radio">Meno-paluu</label>
+                    </div>
+                </div>
+                <div class="my-4 text-left">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="alennus_lippu">
+                        <label class="form-check-label" for="alennus_lippu">Alennus</label>
+                    </div>
+                </div>
+
+                <div class="my-4 text-left">
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Lippuja (kpl)</span>
+                            </div>
+                            <select class="form-control" id="lippuja_maara">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="my-4">
+                    <button onclick="buyTicket()" type="button" class="btn btn-outline-primary">Osta</button>
+                </div>
+
+                <p class="lead text-center"><b>Kokonaishinta: </b> <span id="lippu_kokonaishinta">-</span></p>
+            </div>
+
+            <p class="lead text-center">Kun ohjelma laskee lippujen kokonaishinnan oikein huomioiden matkustusluokan, suunnan, alennuksen ja määrän, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+            <p id="ot2dresult" class="lead text-center font-weight-bold"></p>
+        </div>
+
+        <p class="text-center">&copy; Teemu Salminen - Xamk</p>
+    </div>
+
+    <script src="js/libraries/jquery-3.4.0.min.js"></script>
+    <script src="js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="ot2a.js"></script>
+    <script src="ot2b.js"></script>
+    <script src="ot2c.js"></script>
+    <script src="ot2d.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

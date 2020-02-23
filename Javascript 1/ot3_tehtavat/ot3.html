@@ -1,0 +1,238 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JavaScriptin-ohjelmointi</title>
+    <meta name="description" content="JavaScript-ohjelmoinnin perusteet">
+    <meta name="author" content="Teemu Salminen">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container bg-light">
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 3 A</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Luku</span>
+                    </div>
+                    <input id="tuplattava_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Luku" aria-describedby="basic-addon1" oninput="onTuplaInputChange()">
+                </div>
+                <p id="tuplattu" class="lead text-center">Luku tuplattuna: </p>
+
+            </div>
+
+            <p class="lead text-center">Kun ohjelma tulostaa annetun luvun tuplattuna, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 3 B</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Postinumero</span>
+                    </div>
+                    <input id="postinumero_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Postinumero" aria-describedby="basic-addon1" oninput="postinumeroCheck()">
+                </div>
+                <p id="postinumero_output" class="lead text-center">"" ei ole postinumero.</p>
+
+            </div>
+
+            <p class="lead text-center">Kun ohjelma tunnistaa oikealliset postinumerot, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 3 C</span></h3>
+            <hr class="my-4">
+
+            <h1 id="laskutoimitus_output" class="display-4 text-center">Tulos:</h1>
+
+            <div class="container" style="width: 25rem;">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Luku 1</span>
+                            </div>
+                            <input id="luku1_input" type="number" class="form-control"
+                                value="0" aria-label="Luku 1" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Luku 2</span>
+                            </div>
+                            <input id="luku2_input" type="number" class="form-control"
+                                value="0" aria-label="Luku 2" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <button onclick="sum()" type="button" class="btn btn-outline-primary">+</button>
+                            <button onclick="subtract()" type="button" class="btn btn-outline-primary">-</button>
+                        </div>
+                        <div class="row">
+                            <button onclick="multiply()" type="button" class="btn btn-outline-primary">x</button>
+                            <button onclick="divide()" type="button" class="btn btn-outline-primary">/</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="lead text-center">Kun kaikki operaattorit laskevat luvut matemaattisesti oikein,
+                tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 3 D</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <h3>Sepon tiedot</h3>
+                <p id="seppo_info" class="lead text-center">Sepolla ei ole tietoja</p>
+                <h3>Jonkun muun tiedot</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Etunimi</span>
+                    </div>
+                    <input id="random_etunimi_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Etunimi" aria-describedby="basic-addon1" oninput="updatePersonInfo()">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Sukunimi</span>
+                    </div>
+                    <input id="random_sukunimi_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Sukunimi" aria-describedby="basic-addon1" oninput="updatePersonInfo()">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Ikä</span>
+                    </div>
+                    <input id="random_ika_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Ikä" aria-describedby="basic-addon1" oninput="updatePersonInfo()">
+                </div>
+                <div class="my-4 text-left">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sukupuoli_radio" id="nainen_radio" value=1 checked onchange="updatePersonInfo()">
+                        <label class="form-check-label" for="nainen_radio">Nainen</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="sukupuoli_radio" id="mies_radio" value=2 onchange="updatePersonInfo()">
+                        <label class="form-check-label" for="mies_radio">Mies</label>
+                    </div>
+                </div>
+                <p id="muu_henkilo_info" class="lead text-center">Muulla henkilöllä ei ole tietoja</p>
+
+            </div>
+
+            <p class="lead text-center">Kun ohjelma tulostaa Sepon ja muun henkilön tiedot oikein, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 3 E</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 35rem;">
+                <h3>Lisää kohde</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Kohdenumero</span>
+                    </div>
+                    <input id="kohdenumero_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Kohdenumero" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Osoite</span>
+                    </div>
+                    <input id="osoite_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Osoite" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Hinta (€)</span>
+                    </div>
+                    <input id="hinta_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Hinta" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Pinta-ala (m2)</span>
+                    </div>
+                    <input id="pintaala_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Pinta-ala" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="lisaaKohde()" type="button" class="btn btn-outline-primary">Lisää kohde</button>
+                <hr class="my-4">
+
+                <h3>Hae kohdetta</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Hakuehto</span>
+                    </div>
+                    <input id="hakuehto_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Hakuehto" aria-describedby="basic-addon1">
+                </div>
+                <button onclick="haeKohdettaTaulusta()" type="button" class="btn btn-outline-primary">Hae kohdetta</button>
+                
+
+            </div>
+            <div class="container text-center">
+                <h3>Kohteet</h3>
+                <table class="table text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kohdenumero</th>
+                            <th scope="col">Osoite</th>
+                            <th scope="col">Hinta</th>
+                            <th scope="col">Pinta-ala</th>
+                            <th scope="col">Neliöhinta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kohteet_table">
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="lead text-center">Kun voit lisätä ja hakea kohteita, sekä neliöpinta-ala on oikein, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <p class="text-center">&copy; Teemu Salminen - Xamk</p>
+    </div>
+
+    <script src="js/libraries/jquery-3.4.0.min.js"></script>
+    <script src="js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="ot3a.js"></script>
+    <script src="ot3b.js"></script>
+    <script src="ot3c.js"></script>
+    <script src="ot3d.js"></script>
+    <script src="ot3e.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

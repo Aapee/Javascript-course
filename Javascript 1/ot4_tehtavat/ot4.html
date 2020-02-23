@@ -1,0 +1,277 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>JavaScriptin-ohjelmointi</title>
+    <meta name="description" content="JavaScript-ohjelmoinnin perusteet">
+    <meta name="author" content="Teemu Salminen">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div class="container bg-light">
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 4 A</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center mb-4" style="width: 35rem;">
+                <h3>Lisää kohde</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Kohdenumero</span>
+                    </div>
+                    <input id="kohdenumero_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Kohdenumero" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Osoite</span>
+                    </div>
+                    <input id="osoite_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Osoite" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Hinta (€)</span>
+                    </div>
+                    <input id="hinta_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Hinta" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Pinta-ala (m2)</span>
+                    </div>
+                    <input id="pintaala_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Pinta-ala" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="lisaaKohde()" type="button" class="btn btn-outline-primary">Lisää kohde</button>
+                <hr class="my-4">
+
+                <h3>Hae kohdetta</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Hakuehto</span>
+                    </div>
+                    <input id="hakuehto_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Hakuehto" aria-describedby="basic-addon1">
+                </div>
+                <button onclick="haeKohdettaTaulusta()" type="button" class="btn btn-outline-primary">Hae kohdetta</button>
+                
+
+            </div>
+            <div class="container text-center">
+                <h3>Kohteet</h3>
+                <table class="table text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kohdenumero</th>
+                            <th scope="col">Osoite</th>
+                            <th scope="col">Hinta</th>
+                            <th scope="col">Pinta-ala</th>
+                            <th scope="col">Neliöhinta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kohteet_table">
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="lead text-center">Kun voit lisätä ja hakea kohteita, päivittää hintaa, sekä neliöpinta-ala on oikein, tehtävä on suoritettu oikein. Huomaa että käyttäjän täytyy painaa "Päivitä" näppäintä, ennen kun uusi hinta tallentuu!</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 4 B</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <h3>Lisää käyttäjä</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Käyttäjänimi</span>
+                    </div>
+                    <input id="lisaa_kayttaja_tunnus_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Käyttäjänimi" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Salasana</span>
+                    </div>
+                    <input id="lisaa_kayttaja_salasana_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Salasana" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="lisaaKayttaja()" type="button" class="btn mb-4 btn-outline-primary">Lisää käyttäjä</button>
+
+                <h5 id="kayttajia_count">Lisättyjä käyttäjiä: 0</h5>
+
+                <hr class="my-4">
+
+                <h3>Kirjaudu sisään</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Käyttäjänimi</span>
+                    </div>
+                    <input id="login_tunnus_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Käyttäjänimi" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Salasana</span>
+                    </div>
+                    <input id="login_password_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Salasana" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="mb-4">
+                    <button onclick="kirjauduSisaan()" type="button" class="btn btn-outline-primary">Kirjaudu sisään</button>
+                    <div id="alert_container"></div>
+                </div>
+                
+                <h5 id="kirjautunut_kayttaja">Kirjautunut käyttäjä: -</h5>
+            </div>
+
+            <p class="lead text-center">Kun voit lisätä käyttäjiä ja käyttäjän sisäänkirjautuminen toimii oikealla salasanalla, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+        <div class="jumbotron">
+            <h3><span class="badge badge-secondary">Oppimistehtävä 4 C</span></h3>
+            <hr class="my-4">
+
+            <div class="container text-center" style="width: 25rem;">
+                <h3>Lisää käyttäjä</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Käyttäjänimi</span>
+                    </div>
+                    <input id="lisaa_kayttaja_tunnus4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Käyttäjänimi" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Salasana</span>
+                    </div>
+                    <input id="lisaa_kayttaja_salasana4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Salasana" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="lisaaKayttaja4c()" type="button" class="btn mb-4 btn-outline-primary">Lisää käyttäjä</button>
+
+                <h5 id="kayttajia_count4c">Lisättyjä käyttäjiä: 0</h5>
+
+                <hr class="my-4">
+
+                <h3>Kirjaudu sisään</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Käyttäjänimi</span>
+                    </div>
+                    <input id="login_tunnus4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Käyttäjänimi" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Salasana</span>
+                    </div>
+                    <input id="login_password4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Salasana" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="mb-4">
+                    <button onclick="kirjauduSisaan4c()" type="button" class="btn btn-outline-primary">Kirjaudu sisään</button>
+                    <div id="alert_container4c"></div>
+                </div>
+                
+                <h5 id="kirjautunut_kayttaja4c">Kirjautunut käyttäjä: -</h5>
+            </div>
+
+            <div class="container text-center mb-4" style="width: 35rem;">
+                <h3>Lisää kohde</h3>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Kohdenumero</span>
+                    </div>
+                    <input id="kohdenumero4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Kohdenumero" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Osoite</span>
+                    </div>
+                    <input id="osoite4c_input" type="text" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Osoite" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Hinta (€)</span>
+                    </div>
+                    <input id="hinta4c_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Hinta" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Pinta-ala (m2)</span>
+                    </div>
+                    <input id="pintaala4c_input" type="number" class="form-control"
+                        placeholder="Kirjoita tähän..." aria-label="Pinta-ala" aria-describedby="basic-addon1">
+                </div>
+
+                <button onclick="lisaaKohde4c()" type="button" class="btn btn-outline-primary">Lisää kohde</button>
+                <hr class="my-4">
+                
+
+            </div>
+            <div class="container text-center">
+                <h3>Kohteet</h3>
+                <table class="table text-left">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kohdenumero</th>
+                            <th scope="col">Osoite</th>
+                            <th scope="col">Hinta</th>
+                            <th scope="col">Pinta-ala</th>
+                            <th scope="col">Neliöhinta</th>
+                        </tr>
+                    </thead>
+                    <tbody id="kohteet4c_table">
+                        <tr>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="lead text-center">Kun kirjautuneet kiinteistövälittäjät voivat luoda omia kohteitaan, ja pystyvät muutta ainoastaan oman kohteensa hintaa, tehtävä on suoritettu oikein.</p>
+            <hr class="my-4">
+        </div>
+
+
+        <p class="text-center">&copy; Teemu Salminen - Xamk</p>
+    </div>
+
+    <script src="js/libraries/jquery-3.4.0.min.js"></script>
+    <script src="js/libraries/bootstrap.bundle.min.js"></script>
+    <script src="ot4a.js"></script>
+    <script src="ot4b.js"></script>
+    <script src="ot4c.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

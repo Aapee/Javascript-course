@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+
+<body>
+Ikä: <input id="ika"/><br/>
+<button type="button" onclick="tulostaTiedot();">Tarkasta ikä</button>
+<p id="laatikko"></p>
+
+<script>
+//Tarkastusfunktio palauttaa true, jos on täysi-ikäinen, muuten false
+function tarkastaIka(age) {
+	   if(age >= 18) {
+		return true;
+		}
+		else {
+			return false;
+		}
+	}
+//***************************************************************
+//Ohjelma tarkastaa, onko henkilö täysi-ikäinen
+//Tätä funktiota kutsutaan painamalla nappia (onclick-event käynnistää)
+function tulostaTiedot(){  
+		let ika = document.getElementById("ika").value;
+		
+		/*tarkastusfunktion kutsu 
+		Voisi olla myös näin:
+			let onkoTaysiIkainen = tarkastaIka(ika);
+			if (onkoTaysiIkainen == true) {...}
+		*/
+		if(tarkastaIka(ika)) {  
+			document.getElementById("laatikko").innerHTML = "Täysi-ikäinen";
+		}
+		else {
+			document.getElementById("laatikko").innerHTML = "Alaikäinen";
+		}
+		
+	}
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<title>Nelilaskin</title>
+<script>
+let laskulauseke = "";
+function syota(merkki)
+{	 
+	laskulauseke = laskulauseke + merkki;
+	document.getElementById("laatikko").value = laskulauseke;	
+}
+
+function laske()
+{	let laskulauseke = document.getElementById("laatikko").value;
+	//hyväksyy vain numerot ja operaattorit tietoturvasyistä (regular expression eli säännöllinen lauseke)
+	let str = laskulauseke.replace(/[^-()\d\/*+.]/g, ''); 
+	document.getElementById("laatikko").value = eval(str);	
+}
+function nollaa()
+{	laskulauseke = "";
+	document.getElementById("laatikko").value = "";	
+}
+</script>
+</head>
+<body>
+<form id="laskin">
+  <table border="1" align="left" >
+    <tr><td>  	 
+  <table width="160" border="0" cellspacing="1" cellpadding="1" align="center">
+ 	</tr>
+	<tr> 
+			  <td colspan="4"  height="26">
+              <input type="text" id="laatikko"  size="30">
+            </td>          
+	</tr>
+    <tr align="center"> 
+            <td width="40">
+              <input type="button"  value="   7   " onClick = "syota(7)">
+            </td>
+            <td width="40">
+              <input type="button"  value="   8   " onClick = "syota(8)">
+            </td>
+            <td width="40">
+              <input type="button"  value="   9   " onClick = "syota(9)">
+            </td>
+			<td  width="40">
+              <input type="reset" id="reset" value="   C   " onClick = "nollaa()">
+            </td>          
+	</tr>
+     <tr align="center"> 
+            <td width="40">
+              <input type="button"  value="   4   " onClick = "syota(4)">
+            </td>
+            <td width="40">
+              <input type="button"  value="   5   " onClick = "syota(5)">
+            </td>
+            <td width="40">
+              <input type="button" value="   6   " onClick = "syota(6)">
+            </td>
+			<td width="40">
+              <input type="button" value="    /   " onClick = "syota('/')">
+            </td>          
+	</tr>
+    <tr align="center"> 
+            <td width="40">
+              <input type="button" value="   1   " onClick = "syota(1)">
+            </td>
+            <td width="40">
+              <input type="button" value="   2   " onClick="syota(2)">
+            </td>
+            <td width="40">
+              <input type="button"  value="   3   " onClick = "syota(3)">
+            </td>
+			<td width="40">
+              <input type="button"  value="    *   " onClick = "syota('*')">
+            </td>        
+	</tr>
+	<tr align="center"> 
+            <td width="40">
+              <input type="button"value="   0   " onClick = "syota(0)">
+            </td> 
+			<td width="40">
+              <input type="button" value="   =   " onClick = "laske()">
+               <td width="40">
+              <input type="button"  value="    -   " onClick = "syota('-')">
+            </td>
+            </td>
+            <td width="40"><input type="button"  value="   +   " onClick = "syota('+')"></td>
+	</tr>
+</table></td><tr></table>
+</form>
+</body>
+</html>

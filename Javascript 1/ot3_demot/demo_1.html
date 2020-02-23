@@ -1,0 +1,27 @@
+	
+	<!DOCTYPE html>
+	<html>
+	<body>
+	Etunimi: <input id="etunimi"/><br/>
+	Sukunimi: <input id="sukunimi"/><br/>
+	<button type="input" onclick="tulostaKokoNimi();">Tulosta koko nimi</button>
+	<div id="laatikko"></div>
+	<script>
+
+	//tapahtuma eli hiiren klikkaus kutsuu tätä funktiota
+	function tulostaKokoNimi(){
+		let etunimi = document.getElementById("etunimi").value;
+		let sukunimi = document.getElementById("sukunimi").value;
+		let kokonimi = teeKokoNimi(etunimi,sukunimi); //funktion kutsu nimellä
+		document.getElementById("laatikko").innerHTML = kokonimi;
+	}
+
+	//tätä funktiota kutsutaan nimellä
+	function teeKokoNimi(enimi,snimi) { //funktio saa etunimen ja sukunimen 
+		let knimi = enimi + " " + snimi;
+		return knimi; //funktio palauttaa koko nimen
+	}
+	</script>
+
+	</body>
+	</html>

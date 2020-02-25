@@ -21,7 +21,7 @@ const teeKohde=function(kohdenumero, osoite, hinta, pintaala){
             return true;
         }
         else{
-            console.log('false')
+            console.log('jep')
             return false;
         }
     }
